@@ -1,0 +1,125 @@
+% 使用ctexart文档类（用XeLaTeX编译，直接支持中文）
+\documentclass[UTF8]{ctexart}
+
+%导言区，引入宏包\
+\usepackage{geometry}
+\usepackage{fancyhdr}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage[dvipsnames,svgnames,table]{xcolor}
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{graphicx}
+\usepackage[colorlinks,linktocpage,linkcolor=blue]{hyperref}
+\usepackage{titletoc}
+\usepackage{amsmath}
+\usepackage{cprotect}
+\usepackage{shortvrb}
+
+%定义所需要的颜色
+\definecolor{pack}{RGB}{199,49,124}		
+\definecolor{mBackground}{RGB}{240,240,240}
+\definecolor{maincolor}{RGB}{0,32,245}
+
+\setlength\fboxsep{1.5pt}
+
+%设置封装尺
+
+
+%代码的样例的设置
+\lstset{	
+		firstnumber=1,
+		frame = single,
+		breaklines = true,
+  		xleftmargin=0pt,
+		xrightmargin=0pt,
+		 basicstyle=\small,
+		 showtabs=false,
+		 tabsize=4, 
+		 backgroundcolor=\color{mBackground},
+		 numberstyle=\itshape,
+		 framesep=1pt,
+}
+
+%定义新的 verb 
+\MakeShortVerb| 
+\newcommand{\mcode}[1]{\noindent \caprotect \fbox{#1} 
+}
+
+
+%定义新的颜色输出
+\newcommand{\textbl}[1]{\textbf{\textcolor{maincolor}{#1}}}      %蓝色加粗字体
+\newcommand{\tbt}[1]{\colorbox{lightgray!70}{#1}}		%定义行内的命令显示			
+\newcommand{\txr}[1]{\textcolor{red}{#1}}	
+\newcommand{\txg}[1]{\textcolor{teal}{#1}}
+
+%设置页面
+\geometry{left=2.5cm,right=1.5cm,top=2.5cm,bottom=2.5cm}
+%设置页眉页脚
+\pagestyle{plain}
+
+%设置标题样式
+\ctexset{
+	section = {
+		format+ = \zihao{-4} \heiti \raggedright,
+		name = {,、},
+		number = \chinese{section},
+		beforeskip = 1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
+	},
+	subsection = {
+		format+ = \zihao{5} \heiti \raggedright,
+		% name={\thesubsection、},
+		name = {,、},
+		number = \arabic{subsection},
+		beforeskip = 1.0ex plus 0.2ex minus .2ex,
+		afterskip = 1.0ex plus 0.2ex minus .2ex,
+		aftername = \hspace{0pt}
+	}
+}
+
+%段落缩进
+\setlength{\parindent}{2em}
+%初始化标题
+\title{algorithm2e使用宏包的一点心得}
+\author{\zihao{4} \fangsong 打工人\\  \songti 种田大学}
+
+%正文
+\begin{document}
+	
+\maketitle
+
+\vspace{1em}
+\centerline{\includegraphics[width=5cm]{gongzhonghao.jpg}}
+\centerline{\textcolor{gray}{\bfseries \LaTeX 工作室公众号}} 
+\centerline{\textcolor{gray}{\url{http://www.latexstudio.net}}} 
+	
+
+\begin{center}
+	 \fontsize{25}{30} \kaishu	简 \  介  \selectfont
+\end{center}
+
+		\par 本文档主要是作者在平常使用以及解答一些关于 \textcolor{pack}{algorithm2e} 宏包问题
+		时候的心得,特写此文档.
+		\par 相比于 \textcolor{pack}{tabbing} 制表位的繁杂，\textcolor{pack}{algorithms} 与 
+		\textcolor{pack}{algorithmicx} 的简易但不高的可定制性，\textcolor{pack}{algorithm2e} 相对
+		复杂但是操作性更高，可定制性更强，所以在一定程度上, \textcolor{pack}{algorithm2e} 更加
+	    实用.	    
+	    \par\textcolor{pack}{algorithm2e} 宏包是用于在 \LaTeX 2e中编写算法的环境.算法被定义为
+	    像图形这样的浮动对象.它提供了允许你创建不同种类的关键字的宏，因此提供了一组预定
+	    义的关键字 .你还可以更改关键字的版式.
+	    \par 本文档将从实例出发，介绍关于\textbl{基本的关键字、外框的设定、一些基本的间距设
+	    	定等}希望对大家有所帮助.
+	    \par 对于 \textcolor{pack}{algorithm2e} 这个宏包来说，重要的是找到你需要的关键词以及你
+	    需要调整间距的关键词.本文档只能在解决一些基本的问题，但更多问题需要阅读 \textit{doc} 来解决问题,更多需要自己探索,在解决问题中得到更大的进步.
+		
+
+%%%%%%%%%%%----------------分割线----------------%%%%%%%%%%% 
+\include{section1}
+
+
+
+
+
+
+\end{document}
